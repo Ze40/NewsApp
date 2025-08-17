@@ -28,11 +28,6 @@ class ArticleApi {
         params: finalParams,
       });
 
-      console.log('Request URL:', res.config.url);
-      console.log('Response status:', res.status);
-      console.log('Articles count:', res.data.articles.length);
-      console.log('Total results:', res.data.totalResults);
-
       console.log(res);
 
       return res.data;
