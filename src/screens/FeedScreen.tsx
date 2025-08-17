@@ -73,7 +73,7 @@ const FeedScreen = () => {
     <Container>
       <FlatList
         // eslint-disable-next-line react-native/no-inline-styles
-        style={{ padding: 32 }}
+        contentContainerStyle={{ padding: 32 }}
         data={flatData}
         keyExtractor={item => item.url}
         renderItem={renderItem}
@@ -93,7 +93,7 @@ const FeedScreen = () => {
 
 export default FeedScreen;
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
   flex: 1;
   background: #fafafa;
 `;

@@ -48,6 +48,7 @@ const Top = styled.View`
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  height: 30px;
 `;
 
 const Title = styled.Text`
