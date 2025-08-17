@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Article } from '~/entities/articles/schemas';
 import DetailScreen from '~/screens/DetailScreen';
 import FeedScreen from '~/screens/FeedScreen';
-import { Header, Navigation } from '~/widgets';
+import SearchScreen from '~/screens/SearchScreen';
+import { Header, Navigation, SearchHeader } from '~/widgets';
 
 export type RootStackParamList = {
   Feed: undefined;
@@ -28,7 +30,6 @@ const AppNavigator = () => {
           component={FeedScreen}
           options={{
             title: 'Новости',
-            // eslint-disable-next-line react/no-unstable-nested-components
             header: ({ route, options }) => (
               <Header title={options.title || route.name} isFiltering />
             ),
@@ -38,8 +39,14 @@ const AppNavigator = () => {
           name="Detail"
           component={DetailScreen}
           options={{
-            // eslint-disable-next-line react/no-unstable-nested-components
             header: () => <Header title={''} isGoBack />,
+          }}
+        />
+        <Stack.Screen
+          name="Search"
+          component={SearchScreen}
+          options={{
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
