@@ -7,9 +7,14 @@ import { Filters } from '~/feat';
 interface HeaderProps {
   title: string;
   isGoBack?: boolean;
+  isFiltering?: boolean;
 }
 
-const Header = ({ title, isGoBack = false }: HeaderProps) => {
+const Header = ({
+  title,
+  isGoBack = false,
+  isFiltering = false,
+}: HeaderProps) => {
   const navigation = useNavigation();
 
   return (
@@ -23,7 +28,7 @@ const Header = ({ title, isGoBack = false }: HeaderProps) => {
           )}
           <Title>{title}</Title>
         </Top>
-        <Filters />
+        {isFiltering && <Filters />}
       </Container>
     </SafeContainer>
   );
