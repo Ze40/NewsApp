@@ -46,14 +46,6 @@ const SearchScreen = () => {
     refetch();
   };
 
-  if (flatData.length === 0) {
-    return (
-      <EmptyWrapper>
-        <Empty>Таких новостей нет ;(</Empty>
-      </EmptyWrapper>
-    );
-  }
-
   if (error && !flatData.length) {
     return (
       <Container>
@@ -69,6 +61,11 @@ const SearchScreen = () => {
         </Container>
       </SafeContainer>
       <ScrollContainer>
+        {!flatData.length && (
+          <EmptyWrapper>
+            <Empty>Таких новостей нет ;(</Empty>
+          </EmptyWrapper>
+        )}
         {isLoading ? (
           <Container>
             <Loader size="large" />
@@ -78,7 +75,7 @@ const SearchScreen = () => {
             // eslint-disable-next-line react-native/no-inline-styles
             contentContainerStyle={{ padding: 32 }}
             data={flatData}
-            keyExtractor={item => item.url}
+            keyExtractor={item => item.title + item.url}
             renderItem={renderItem}
             onEndReached={handleLoadMore}
             ItemSeparatorComponent={Separator}
@@ -107,7 +104,7 @@ const Container = styled.View`
   padding: 16px 30px;
 `;
 
-const ScrollContainer = styled.SafeAreaView`
+const ScrollContainer = styled(SafeAreaView)`
   flex: 1;
   background: #fafafa;
 `;

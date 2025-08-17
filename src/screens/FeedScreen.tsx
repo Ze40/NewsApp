@@ -6,6 +6,7 @@ import { Article } from '~/entities/articles/schemas';
 import { useNews } from '~/hooks';
 import { RootStackParamList } from '~/navigation/AppNavigator';
 import { ArticleCard, ErrorView, Loader } from '~/shared/ui';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFiltersStore } from '~/store';
 
 type NavProp = NativeStackNavigationProp<RootStackParamList, 'Feed'>;
@@ -75,7 +76,7 @@ const FeedScreen = () => {
         // eslint-disable-next-line react-native/no-inline-styles
         contentContainerStyle={{ padding: 32 }}
         data={flatData}
-        keyExtractor={item => item.url}
+        keyExtractor={item => item.title + item.url}
         renderItem={renderItem}
         onEndReached={handleLoadMore}
         ItemSeparatorComponent={Separator}
@@ -93,7 +94,7 @@ const FeedScreen = () => {
 
 export default FeedScreen;
 
-const Container = styled.SafeAreaView`
+const Container = styled(SafeAreaView)`
   flex: 1;
   background: #fafafa;
 `;
