@@ -28,8 +28,6 @@ class ArticleApi {
         params: finalParams,
       });
 
-      console.log(res);
-
       return res.data;
     } catch (err) {
       if (axios.isAxiosError(err)) {
